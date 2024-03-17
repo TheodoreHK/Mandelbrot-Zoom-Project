@@ -6,6 +6,9 @@ from PIL import Image
 import colorsys
 
 
+
+
+
 def make_image(center_num, width, n):
     image = Image.new("RGB", (n, n), (255, 255, 255))
     pixels = image.load()
@@ -14,8 +17,10 @@ def make_image(center_num, width, n):
         for y in range(n):
             coordinate = (center_num[0] + ((x-(n/2)) * (width / n)), center_num[1] + ((y-(n/2)) * (width / n)))
             pixels[x, y] = dist_to_color(calc(coordinate), 10**8)
-    image.show()
-    return image
+    # image.show
+    print("L")
+    image_array = np.array(image)
+    return image, image_array
 
 
 # max_distance is set to 10^8.
